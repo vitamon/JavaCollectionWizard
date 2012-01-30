@@ -11,7 +11,7 @@ import static ua.in.vitamon.javaCollectionsWizard.model.CollType.*;
 public class CollectionsListDataProvider {
     private static final TreeMap<String, SearchParams> collections = new TreeMap<String, SearchParams>();
 
-    public CollectionsListDataProvider() {
+    static {
         //sets
         add(Set.class, INTERFACE);
         add(HashSet.class, ALLOW_NULL);
@@ -19,7 +19,7 @@ public class CollectionsListDataProvider {
         add(SortedSet.class, INTERFACE, SORTABLE);
         add(NavigableSet.class, INTERFACE, SORTABLE);
         add(TreeSet.class, SORTABLE);
-        add(EnumSet.class);
+        add(EnumSet.class, INTERFACE);
         add(ConcurrentSkipListSet.class, SORTABLE, THREAD_SAFE);
         add(CopyOnWriteArraySet.class, THREAD_SAFE);
 
@@ -55,20 +55,21 @@ public class CollectionsListDataProvider {
         add(Deque.class, INTERFACE);
         add(ArrayDeque.class, ALLOW_DUPLICATES);
         add(BlockingDeque.class, INTERFACE);
-
     }
 
-    private void add(Class<?> clazz, CollType... params) {
+    private static void add(Class<?> clazz, CollType... params) {
         String name = clazz.getName();
         if (collections.get(name) != null) throw new RuntimeException("duplicate collection declaration :" + name);
         collections.put(name, SearchParams.newInstance(params));
     }
 
-    public String[] getCollections(SearchParams params) {
+    public String[] getCollections(SearchParams<CollType> params) {
         ArrayList<String> result = new ArrayList<String>(collections.size());
-        for (String key : collections.keySet()) {
 
-            if (collections.get(key).equals(params)) {
+        for (String key : collections.keySet()) {
+            SearchParams collectionParams = collections.get(key);
+
+            if (collectionParams.isAllSet(params)) {
                 result.add(key);
             }
         }

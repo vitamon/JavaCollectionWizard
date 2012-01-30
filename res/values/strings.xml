@@ -21,4 +21,15 @@
     <string name="allowNull">Allow Null values</string>
     <string name="allowDuplicates">Allow duplicates</string>
     <string name="isSorted">Sorted</string>
+    <string name="sorted">Sorted</string>
+    <string name="sorted_on">Sorted ON</string>
+    <string name="thread_safe">Thread Safe</string>
+    <string name="thread_safe_on">Thread Safe ON</string>
+    <string name="allow_null">Allow Null</string>
+    <string name="allow_null_on">Allow Null ON</string>
+    <string name="allow_duplicates">Allow Duplicates</string>
+    <string name="allow_duplicates_on">Allow Duplicates ON</string>
+    <string name="only_interfaces">Only Interfaces</string>
+    <string name="only_interfaces_on">Only Interfaces ON</string>
+    <string name="welcome_text">"This little app will help you with choosing java collection type that fits your needs best.\n\nEnjoy!\n\nComments/suggestions are welcome!\n\nvit.tam@gmail.com"</string>
 </resources>

@@ -13,43 +13,55 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_centerHorizontal="true"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:layout_centerHorizontal="true"
+              android:orientation="vertical">
 
-    <ListView android:layout_width="match_parent"
-              android:id="@+id/lvCollections"
-              android:layout_height="wrap_content"
-              android:layout_weight="1"/>
+    <ListView
+            android:id="@+id/lvCollections"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.6"
+            android:padding="5dip"
+            android:clipChildren="false" android:fastScrollEnabled="true">
+    </ListView>
 
 
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/cbIsSorted"
-              android:text="@string/isSorted"
+    <ToggleButton
+            android:id="@+id/tbIsSorted"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textOff="@string/sorted"
+            android:textOn="@string/sorted_on"/>
+
+    <ToggleButton
+            android:id="@+id/tbThreadSafe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textOff="@string/thread_safe"
+            android:textOn="@string/thread_safe_on"/>
+
+
+    <ToggleButton
+            android:id="@+id/tbAllowNull"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textOff="@string/allow_null"
+            android:textOn="@string/allow_null_on"/>
+
+    <ToggleButton
+            android:id="@+id/tbAllowDuplicates"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textOff="@string/allow_duplicates"
+            android:textOn="@string/allow_duplicates_on"
             />
 
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/cbAllowDuplicates"
-              android:text="@string/allowDuplicates"
-            />
+    <ToggleButton
+            android:id="@+id/tbIsInterface"
+            android:layout_width="fill_parent"
+            android:textOff="@string/only_interfaces"
+            android:textOn="@string/only_interfaces_on"
+            android:layout_height="wrap_content"/>
 
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/cbThreadSafe"
-              android:text="@string/threadSafe"/>
-
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/cbIsInterface"
-              android:text="@string/isInterface"/>
-
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/cbAllowNull"
-              android:text="@string/allowNull"/>
 </LinearLayout>
