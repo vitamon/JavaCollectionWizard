@@ -63,7 +63,7 @@ public class CollectionsListDataProvider {
         collections.put(name, SearchParams.newInstance(params));
     }
 
-    public String[] getCollections(SearchParams<CollType> params) {
+    public static String[] getCollections(SearchParams<CollType> params) {
         ArrayList<String> result = new ArrayList<String>(collections.size());
 
         for (String key : collections.keySet()) {

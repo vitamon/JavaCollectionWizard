@@ -35,7 +35,7 @@ import ua.in.vitamon.javaCollectionsWizard.model.SearchParams;
 import static ua.in.vitamon.javaCollectionsWizard.model.CollType.*;
 
 @EActivity(R.layout.main_screen)
-public class JavaCollectionsWizard extends Activity {
+public class JavaCollectionsWizard extends Activity implements OnCheckedChangeListener {
 
     @Pref
     MySharedPrefs_ prefs;
@@ -66,11 +66,11 @@ public class JavaCollectionsWizard extends Activity {
             showGreetDialog();
         }
         searchParams.reset();
-        tbIsInterface.setOnCheckedChangeListener(comboChangedListener);
-        tbIsSorted.setOnCheckedChangeListener(comboChangedListener);
-        tbThreadSafe.setOnCheckedChangeListener(comboChangedListener);
-        tbAllowDuplicates.setOnCheckedChangeListener(comboChangedListener);
-        tbAllowNull.setOnCheckedChangeListener(comboChangedListener);
+        tbIsInterface.setOnCheckedChangeListener(this);
+        tbIsSorted.setOnCheckedChangeListener(this);
+        tbThreadSafe.setOnCheckedChangeListener(this);
+        tbAllowDuplicates.setOnCheckedChangeListener(this);
+        tbAllowNull.setOnCheckedChangeListener(this);
         //
         updateCollectionsList();
     }
@@ -81,25 +81,22 @@ public class JavaCollectionsWizard extends Activity {
         prefs.edit().firstRun().put(false).apply();
     }
 
-    private OnCheckedChangeListener comboChangedListener = new OnCheckedChangeListener() {
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (buttonView == tbIsInterface) {
-                searchParams.setSearchParam(INTERFACE, isChecked);
-            } else if (buttonView == tbIsSorted) {
-                searchParams.setSearchParam(SORTABLE, isChecked);
-            } else if (buttonView == tbThreadSafe) {
-                searchParams.setSearchParam(THREAD_SAFE, isChecked);
-            } else if (buttonView == tbAllowDuplicates) {
-                searchParams.setSearchParam(ALLOW_DUPLICATES, isChecked);
-            } else if (buttonView == tbAllowNull) {
-                searchParams.setSearchParam(ALLOW_NULL, isChecked);
-            }
-            updateCollectionsList();
-        }
-    };
-
     private void updateCollectionsList() {
         lvCollections.setAdapter(new ListViewAdapter(this, collectionsListDataProvider.getCollections(searchParams)));
     }
 
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (buttonView == tbIsInterface) {
+            searchParams.setSearchParam(INTERFACE, isChecked);
+        } else if (buttonView == tbIsSorted) {
+            searchParams.setSearchParam(SORTABLE, isChecked);
+        } else if (buttonView == tbThreadSafe) {
+            searchParams.setSearchParam(THREAD_SAFE, isChecked);
+        } else if (buttonView == tbAllowDuplicates) {
+            searchParams.setSearchParam(ALLOW_DUPLICATES, isChecked);
+        } else if (buttonView == tbAllowNull) {
+            searchParams.setSearchParam(ALLOW_NULL, isChecked);
+        }
+        updateCollectionsList();
+    }
 }
