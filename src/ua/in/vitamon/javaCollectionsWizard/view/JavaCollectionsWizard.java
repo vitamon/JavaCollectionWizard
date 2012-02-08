@@ -23,8 +23,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.Inject;
 import com.googlecode.androidannotations.annotations.ViewById;
 import com.googlecode.androidannotations.annotations.sharedpreferences.Pref;
 import ua.in.vitamon.javaCollectionsWizard.R;
@@ -38,12 +38,12 @@ import static ua.in.vitamon.javaCollectionsWizard.model.CollType.*;
 public class JavaCollectionsWizard extends Activity implements OnCheckedChangeListener {
 
     @Pref
-    MySharedPrefs_ prefs;
+    public MySharedPrefs_ prefs;
 
-    @Inject
+    @Bean
     public CollectionsListDataProvider collectionsListDataProvider;
 
-    @Inject
+    @Bean
     public SearchParams searchParams;
 
     @ViewById

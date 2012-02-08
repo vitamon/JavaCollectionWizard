@@ -1,11 +1,11 @@
 package ua.in.vitamon.javaCollectionsWizard.model;
 
-import com.googlecode.androidannotations.annotations.Enhanced;
+import com.googlecode.androidannotations.annotations.EBean;
 
 import java.util.Set;
 import java.util.TreeSet;
 
-@Enhanced
+@EBean
 public class SearchParams<T extends Enum> {
 
     private Set<T> searchKeys;

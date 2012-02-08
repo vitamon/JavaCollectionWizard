@@ -5,5 +5,5 @@ public enum CollType {
     THREAD_SAFE,
     ALLOW_DUPLICATES,
     ALLOW_NULL,
-    INTERFACE;
+    INTERFACE
 }
